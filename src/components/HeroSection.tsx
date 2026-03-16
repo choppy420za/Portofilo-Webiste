@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Play, Sparkles } from "lucide-react";
 
 const container = {
   hidden: { opacity: 0 },
@@ -22,7 +22,8 @@ const metrics = [
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen py-[20vh]" id="top">
+    <section className="relative overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36" id="top">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(0,200,255,0.16),transparent_30%),radial-gradient(circle_at_85%_10%,rgba(0,130,255,0.12),transparent_35%)]" />
       <div className="container">
         <motion.div
           variants={container}
@@ -32,15 +33,16 @@ const HeroSection = () => {
         >
           {/* Left: Copy */}
           <div>
-            <motion.div variants={item} className="kicker mb-6">
-              Johannesburg-based editor
+            <motion.div variants={item} className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5">
+              <Sparkles size={14} className="text-primary" />
+              <span className="kicker !text-[10px]">Johannesburg-based editor</span>
             </motion.div>
 
             <motion.h1
               variants={item}
-              className="gradient-text mb-6 text-[clamp(2.5rem,8vw,5rem)] font-semibold leading-[0.95] letter-tight"
+              className="gradient-text mb-5 text-[clamp(2.8rem,9vw,5.8rem)] font-semibold leading-[0.92] letter-tight"
             >
-              Video editing with cinematic discipline.
+              Video editing with cinematic discipline and UX clarity.
             </motion.h1>
 
             <motion.p variants={item} className="max-w-[48ch] text-base leading-relaxed text-muted-foreground">
@@ -48,16 +50,29 @@ const HeroSection = () => {
               human, and intentional. From documentary pacing to polished corporate campaigns.
             </motion.p>
 
+            <motion.div variants={item} className="mt-6 flex flex-wrap gap-2">
+              <a href="#services" className="rounded-md border border-border bg-card px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground">
+                Documentary edits
+              </a>
+              <a href="#work" className="rounded-md border border-border bg-card px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground">
+                Campaign content
+              </a>
+              <a href="#contact" className="rounded-md border border-border bg-card px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground">
+                Book discovery call
+              </a>
+            </motion.div>
+
             <motion.div variants={item} className="mt-8 flex flex-wrap gap-4">
               <a
                 href="#work"
-                className="btn-press bg-foreground px-6 py-3 text-sm font-semibold text-background transition-all hover:bg-primary hover:text-primary-foreground"
+                className="btn-press inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
               >
+                <Play size={16} />
                 View selected work
               </a>
               <a
                 href="#contact"
-                className="btn-press border border-border px-6 py-3 text-sm font-semibold text-foreground transition-all card-hover"
+                className="btn-press rounded-md border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-all card-hover"
               >
                 Book a call
               </a>
@@ -65,7 +80,7 @@ const HeroSection = () => {
 
             <motion.div variants={item} className="mt-16 grid gap-4 sm:grid-cols-3">
               {metrics.map((m) => (
-                <div key={m.value} className="rim-border rounded-lg p-4">
+                <div key={m.value} className="rim-border rounded-lg bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40">
                   <div className="mb-1 text-2xl font-semibold text-primary">{m.value}</div>
                   <div className="text-xs leading-snug text-muted-foreground">{m.label}</div>
                 </div>
@@ -74,7 +89,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right: Showreel panel */}
-          <motion.div variants={item} className="relative">
+          <motion.div variants={item} className="relative lg:pl-2">
             <div className="rim-border overflow-hidden rounded-lg">
               <div className="flex items-center justify-between border-b border-border px-4 py-3">
                 <span className="kicker text-[10px]">Showreel 2026</span>
@@ -104,7 +119,10 @@ const HeroSection = () => {
           transition={{ delay: 1.2 }}
           className="mt-24 flex justify-center"
         >
-          <ArrowDown size={20} strokeWidth={1.5} className="animate-bounce text-muted-foreground" />
+          <a href="#work" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs text-muted-foreground hover:text-foreground">
+            Scroll to work
+            <ArrowDown size={16} strokeWidth={1.5} className="animate-bounce" />
+          </a>
         </motion.div>
       </div>
     </section>
